@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>Hal24k.Auth.Oidc.JwtBearer</id>
+    <version>1.0.0</version>
+    <title>HAL24K OIDC JwtBearer middleware</title>
+    <authors>timstokman</authors>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
+    <projectUrl>https://www.github.com/hal24k/OidcJwtBearer</projectUrl>
+    <iconUrl>https://images.squarespace-cdn.com/content/5991c9fb37c581e9a21d30ac/1517934133414-JLEEHBO6AGYWU7KAF3DU/HAL24K-Logo-115.png?content-type=image%2Fpng</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides an extension to the JwtBearer middleware for ASP.NET Core. In addition to verifying an access token, it will also fetch the userinfo from the identity/oidc provider, and populate the UserPrincipal with that data.</description>
+    <releaseNotes>Initial 1.0.0 release</releaseNotes>
+    <copyright>Copyright 2019 HAL24K</copyright>
+    <tags>aspnetcore authentication security jwt oidc openid oauth bearer</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNetCore.Authentication.JwtBearer" version="3.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="**" />
+  </files>
+</package>
