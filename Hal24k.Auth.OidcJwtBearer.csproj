@@ -2,14 +2,39 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PackageId>Hal24k.Auth.OidcJwtBearer</PackageId>
+    <Authors>timstokman</Authors>
+    <Company>HAL24K</Company>
+    <Version>1.0.0</Version>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>aspnetcore;authentication;security;jwt;oidc;openid;oauth;bearer</PackageTags>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Description>Provides an extension to the JwtBearer middleware for ASP.NET Core. In addition to verifying an access token, it will also fetch the userinfo from the identity/OIDC provider, and populate the UserPrincipal with that data.</Description>
+    <Copyright>HAL24K 2019</Copyright>
+    <PackageProjectUrl>https://www.github.com/hal24k/OidcJwtBearer</PackageProjectUrl>
+    <PackageIconUrl>https://images.squarespace-cdn.com/content/5991c9fb37c581e9a21d30ac/1517934133414-JLEEHBO6AGYWU7KAF3DU/HAL24K-Logo-115.png?content-type=image%2Fpng</PackageIconUrl>
+    <PackageIcon>HAL24K-logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/HAL24K/OidcJwtBearer.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="HAL24K-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
