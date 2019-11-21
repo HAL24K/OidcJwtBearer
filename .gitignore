@@ -2,3 +2,4 @@
 .vs
 obj
 *.user
+StyleCop.Cache

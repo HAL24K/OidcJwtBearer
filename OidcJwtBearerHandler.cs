@@ -340,9 +340,11 @@ namespace Hal24k.Auth.OidcJwtBearer
         private async Task AddUserInfoToPrincipal(TokenValidatedContext context)
         {
             var token = (JwtSecurityToken)context.SecurityToken;
-            var userInfo = await GetUserInfo(token).ConfigureAwait(false);
-            ClaimsIdentity identity = GetIdentity(userInfo, token);
-            context.Principal.AddIdentity(identity);
+            using (var userInfo = await GetUserInfo(token).ConfigureAwait(false))
+            {
+                ClaimsIdentity identity = GetIdentity(userInfo, token);
+                context.Principal.AddIdentity(identity);
+            }
         }
 
         private async Task<JsonDocument> GetUserInfo(JwtSecurityToken token)
@@ -364,10 +366,12 @@ namespace Hal24k.Auth.OidcJwtBearer
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.RawData);
                 Uri userinfoEndpoint = new Uri(configuration?.UserInfoEndpoint ?? throw new HttpRequestException("No known token-endpoint"));
-                HttpResponseMessage userInfoResponse = await client.GetAsync(userinfoEndpoint).ConfigureAwait(false);
-                userInfoResponse.EnsureSuccessStatusCode();
-                string responseBody = await userInfoResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return responseBody;
+                using (HttpResponseMessage userInfoResponse = await client.GetAsync(userinfoEndpoint).ConfigureAwait(false))
+                {
+                    userInfoResponse.EnsureSuccessStatusCode();
+                    string responseBody = await userInfoResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    return responseBody;
+                }
             }
         }
 
