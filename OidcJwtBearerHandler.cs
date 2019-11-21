@@ -352,7 +352,7 @@ namespace Hal24k.Auth.OidcJwtBearer
             if (!cache.TryGetValue(cacheKey, out userInfo))
             {
                 userInfo = await FetchUserInfo(token).ConfigureAwait(false);
-                cache.Set(cacheKey, userInfo, new MemoryCacheEntryOptions() { AbsoluteExpiration = token.ValidTo.AddSeconds(-10), Size = userInfo.Length });
+                cache.Set(cacheKey, userInfo, new MemoryCacheEntryOptions() { AbsoluteExpiration = token.ValidTo.AddSeconds(-5), Size = userInfo.Length });
             }
 
             return JsonDocument.Parse(userInfo);
