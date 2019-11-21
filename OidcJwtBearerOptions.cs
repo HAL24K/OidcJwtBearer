@@ -58,7 +58,7 @@ namespace Hal24k.Auth.OidcJwtBearer
         }
 
         /// <summary>
-        /// Configure how claims will be 
+        /// Configure how claims will be mapped from the userinfo to the UserPrincipal
         /// </summary>
         public ClaimActionCollection ClaimActions { get; set; }
     }
