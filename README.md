@@ -8,6 +8,39 @@ To use this you need:
 
 ## Example
 
-`
+```cs
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
 
-`
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddOidcJwtBearer(options =>
+                {
+                    // Base-address of your identityserver
+                    options.Authority = "https://demo.identityserver.io";
+
+                    // Name of the API resource
+                    options.Audience = "my_api";
+                    
+                    // Save the access token for use later
+                    options.SaveToken = true;
+                    
+                    // Map a custom claim to your user-principal
+                    options.ClaimActions.MapJsonKey("custom_claim", "custom_claim");
+                });
+                
+        // ...
+    }
+
+    public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+    {
+        // ...
+        
+        app.UseAuthentication();
+        
+        // ...
+    }
+}
+```
