@@ -19,7 +19,11 @@ namespace Hal24k.Auth.OidcJwtBearer
         /// <param name="builder">The current AuthenticationBuilder</param>
         /// <returns>The AuthenticationBuilder with the OidcJwtBearer middleware added</returns>
         public static AuthenticationBuilder AddOidcJwtBearer([NotNull] this AuthenticationBuilder builder)
-            => builder.AddOidcJwtBearer(JwtBearerDefaults.AuthenticationScheme, _ => { });
+            => builder.AddOidcJwtBearer(
+                   JwtBearerDefaults.AuthenticationScheme, 
+                   _ => 
+                   { 
+                   });
 
         /// <summary>
         /// Add the OidcJwtBearer middleware with the default authentication schema
@@ -34,8 +38,8 @@ namespace Hal24k.Auth.OidcJwtBearer
         /// Add the OidcJwtBearer middleware
         /// </summary>
         /// <param name="builder">The current AuthenticationBuilder</param>
-        /// <param name="configureOptions">A callback to configure options</param>
         /// <param name="authenticationScheme">The authentication schema</param>
+        /// <param name="configureOptions">A callback to configure options</param>
         /// <returns>The AuthenticationBuilder with the OidcJwtBearer middleware added</returns>
         public static AuthenticationBuilder AddOidcJwtBearer([NotNull] this AuthenticationBuilder builder, [NotNull] string authenticationScheme, [NotNull] Action<OidcJwtBearerOptions> configureOptions)
             => builder.AddOidcJwtBearer(authenticationScheme, displayName: null, configureOptions: configureOptions);
@@ -44,9 +48,9 @@ namespace Hal24k.Auth.OidcJwtBearer
         /// Add the OidcJwtBearer middleware
         /// </summary>
         /// <param name="builder">The current AuthenticationBuilder</param>
-        /// <param name="configureOptions">A callback to configure options</param>
         /// <param name="authenticationScheme">The authentication schema</param>
         /// <param name="displayName">The display name</param>
+        /// <param name="configureOptions">A callback to configure options</param>
         /// <returns>The AuthenticationBuilder with the OidcJwtBearer middleware added</returns>
         public static AuthenticationBuilder AddOidcJwtBearer([NotNull] this AuthenticationBuilder builder, [NotNull] string authenticationScheme, [AllowNull] string? displayName, [NotNull] Action<OidcJwtBearerOptions> configureOptions)
         {

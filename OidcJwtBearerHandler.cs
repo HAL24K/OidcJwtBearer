@@ -24,9 +24,8 @@ namespace Hal24k.Auth.OidcJwtBearer
 {
     /// <summary>
     /// This is the OidcJwtBearer authentication middleware. 
-    /// 
     /// <rant>
-    /// Unfortunatly the original JwtBearerHandler is not extendable due to how the AuthenticationHandler is structured. There is an IAuthenticationHandler 
+    /// Unfortunately the original JwtBearerHandler is not extendable due to how the AuthenticationHandler is structured. There is an IAuthenticationHandler 
     /// interface, but AuthenticationBuilder.AddScheme only takes the AuthenticationHandler abstract class as parameter. Why even have that interface
     /// if you can't use it. It results in a non-extendable class, so this class contains copy-pasted code from the Microsoft.AspNetCore.Authentication.JwtBearer 
     /// package.
@@ -52,12 +51,16 @@ namespace Hal24k.Auth.OidcJwtBearer
             set => base.Events = value;
         }
 
+        /// <summary>
+        /// Initialize a new event object
+        /// </summary>
+        /// <returns>The initialized JwtBearerEvents</returns>
         protected override Task<object> CreateEventsAsync() => Task.FromResult<object>(new JwtBearerEvents());
 
         /// <summary>
         /// Searches the 'Authorization' header for a 'Bearer' token. If the 'Bearer' token is found, it is validated using <see cref="TokenValidationParameters"/> set in the options.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The authentication result</returns>
         protected override async Task<AuthenticateResult?> HandleAuthenticateAsync()
         {
             string? token = null;

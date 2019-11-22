@@ -39,7 +39,7 @@ namespace Hal24k.Auth.OidcJwtBearer
         };
 
         /// <summary>
-        /// Initialize OidcJwtBearerOptions
+        /// Initializes a new instance of the <see cref="OidcJwtBearerOptions"/> class.
         /// </summary>
         public OidcJwtBearerOptions()
         {

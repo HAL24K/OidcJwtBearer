@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 namespace Hal24k.Auth.OidcJwtBearer
 {
     /// <summary>
-    /// Does postprocessing for OidcJwtBearerOptions, fills in missing values and does some validation
+    /// Does post-processing for OidcJwtBearerOptions, fills in missing values and does some validation
     /// </summary>
     internal class OidcJwtBearerPostConfigureOptions : IPostConfigureOptions<OidcJwtBearerOptions>
     {
