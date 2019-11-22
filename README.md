@@ -28,9 +28,6 @@ public class Startup
                     // Name of the API resource
                     options.Audience = "my_api";
                     
-                    // Save the access token for use later
-                    options.SaveToken = true;
-                    
                     // Map a custom claim to your user-principal
                     options.ClaimActions.MapJsonKey("custom_claim", "custom_claim");
                 });
