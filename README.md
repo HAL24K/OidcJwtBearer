@@ -4,7 +4,7 @@ Provides an extension to the JwtBearer middleware for ASP.NET Core. In addition 
 
 To use this you need:
 * An openid provider
-* The access token needs the openid scope and the scopes for any other information you want to request
+* The access token needs the openid scope (required!) and the scopes for any other information you want to request from the userinfo endpoint
 
 ## Install
 
