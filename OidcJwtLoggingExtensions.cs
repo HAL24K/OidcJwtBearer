@@ -8,19 +8,19 @@ namespace Hal24k.Auth.OidcJwtBearer
     /// </summary>
     internal static class OidcJwtLoggingExtensions
     {
-        private static Action<ILogger, Exception> tokenValidationFailed =
+        private static readonly Action<ILogger, Exception> tokenValidationFailed =
             LoggerMessage.Define(
                 eventId: 1,
                 logLevel: LogLevel.Information,
                 formatString: "Failed to validate the token.");
 
-        private static Action<ILogger, Exception?> tokenValidationSucceeded =
+        private static readonly Action<ILogger, Exception?> tokenValidationSucceeded =
             LoggerMessage.Define(
                 eventId: 2,
                 logLevel: LogLevel.Information,
                 formatString: "Successfully validated the token.");
 
-        private static Action<ILogger, Exception> errorProcessingMessage =
+        private static readonly Action<ILogger, Exception> errorProcessingMessage =
             LoggerMessage.Define(
                 eventId: 3,
                 logLevel: LogLevel.Error,
